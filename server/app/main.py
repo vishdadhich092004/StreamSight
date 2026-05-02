@@ -1,8 +1,8 @@
 from fastapi import FastAPI
 
+from app.routes import health, root
+
 app = FastAPI()
 
-
-@app.get("/health")
-def health():
-    return {"status": "ok"}
+app.include_router(root.router)
+app.include_router(health.router)
